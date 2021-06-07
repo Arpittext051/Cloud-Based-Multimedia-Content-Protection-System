@@ -43,7 +43,7 @@
 {% url 'login' as login %}
 {% url 'register' as register %}
 
-<body>
+<body class="overlay">
     <!-- Start Header Area -->
     <header class="header-area header-wide">
         <!-- main header start -->
@@ -104,18 +104,9 @@
                 <div class="row align-items-center">
                     <div class="col-12">
                         <div class="mobile-main-header">
-                            <div class="mobile-logo">
-                                <a href="index.html">
-                                    <img src="assets/img/logo/logo.png" alt="Brand Logo">
-                                </a>
-                            </div>
-                            <div class="mobile-menu-toggler">
-                                <div class="mini-cart-wrap">
-                                    <a href="cart.html">
-                                        <i class="pe-7s-shopbag"></i>
-                                        <div class="notification">0</div>
-                                    </a>
-                                </div>
+                          
+                            <div class="mobile-menu-toggler ml-auto">
+                                
                                 <button class="mobile-menu-btn">
                                     <span></span>
                                     <span></span>
@@ -142,63 +133,42 @@
 
                 <div class="off-canvas-inner">
                     <!-- search box start -->
-                    <div class="search-box-offcanvas">
-                        <form>
-                            <input type="text" placeholder="Search Here...">
-                            <button class="search-btn"><i class="pe-7s-search"></i></button>
-                        </form>
-                    </div>
-                    <!-- search box end -->
-
+                   
                     <!-- mobile menu start -->
                     <div class="mobile-navigation">
 
                         <!-- mobile menu navigation start -->
                         <nav>
                             <ul class="mobile-menu">
-                                <li class="menu-item-has-children"><a href="index.html">Home</a>
+                                <li class="menu-item-has-children"><a href="{% url 'homepage' %}">Home</a>
                                  
                                 </li>
+                                 {% if user.is_authenticated %}
+                                            <li class="{% if request.path == history %}active{% endif %}"><a href="{% url 'history' %}">History</a></li>
+                                            <li class="{% if request.path == media %}active{% endif %}"><a href="{% url 'media' %}">Upload</a></li>
+                                            <li class="{% if request.path == multimedia %}active{% endif %}"><a href="{% url 'multimedia' %}">Multimedia</a></li>
+                                            <li><a href="{% url 'logout' %}">Logout</a></li>
+                                           {% else %}                                       
+                                       
+                                            <li class="{% if request.path == login %}active{% endif %}"><a href="{% url 'login' %}">Login </a>
+                                                
+                                            </li>
+                                            <li class="{% if request.path == register %}active{% endif %}"><a href="{% url 'register' %}">SignUp</a>
+                                             
+                                            </li>
+                                            {% endif %}
                   
-                                <li><a href="contact-us.html">About us</a></li>
+                                
                             </ul>
                         </nav>
                         <!-- mobile menu navigation end -->
                     </div>
                     <!-- mobile menu end -->
 
-                    <div class="mobile-settings">
-                        <ul class="nav">
-                           
-                            <li>
-                                <div class="dropdown mobile-top-dropdown">
-                                    <a href="#" class="dropdown-toggle" id="myaccount" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                        My Account
-                                        <i class="fa fa-angle-down"></i>
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="myaccount">
-                                        <a class="dropdown-item" href="my-account.html">my account</a>
-                                        <a class="dropdown-item" href="login-register.html"> login</a>
-                                        <a class="dropdown-item" href="login-register.html">register</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
+                    
                     <!-- offcanvas widget area start -->
                     <div class="offcanvas-widget-area">
-                        <div class="off-canvas-contact-widget">
-                            <ul>
-                                <li><i class="fa fa-mobile"></i>
-                                    <a href="#">0123456789</a>
-                                </li>
-                                <li><i class="fa fa-envelope-o"></i>
-                                    <a href="#">demo@example.com</a>
-                                </li>
-                            </ul>
-                        </div>
+                        
                         <div class="off-canvas-social-widget">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -223,9 +193,9 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright-text text-center">
-                            <p class="copyright-text">&copy;2021 / Cloud Based Multimedia Content Protection System /<a href="index.html">CBMCPS</a>. Made with <i
-                                    class="fa fa-book text-danger"></i> by <a class="" href=""
-                                    target="_blank">Abhinav Chaudhary</a> </p>
+                            <p class="copyright-text font-weight-bold">&copy;2021 / Cloud Based Multimedia Content Protection System /<a href="index.html">CBMCPS</a>. Made with <i
+                                    class="fa fa-book text-danger"></i> / <a class="" href=""
+                                    target="_blank">***</a> </p>
                         </div>
                     </div>
                 </div>

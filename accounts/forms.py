@@ -6,8 +6,8 @@ from django.contrib.auth import password_validation
 
 class CustomerRegistraitonForm(UserCreationForm):
     
-    password1 = forms.CharField(required=True,label='Password 1',widget=forms.PasswordInput(attrs={'placeholder':"Enter Your Password"}))
-    password2 = forms.CharField(required=True,label='Password 2',widget=forms.PasswordInput(attrs={'placeholder':"Enter Again Your Password"}))
+    password1 = forms.CharField(required=True,label='Password ',widget=forms.PasswordInput(attrs={'placeholder':"Enter Your Password"}))
+    password2 = forms.CharField(required=True,label='Confirm Password',widget=forms.PasswordInput(attrs={'placeholder':"Enter Again Your Password"}))
     email = forms.CharField(required=True, label='Email',widget=forms.EmailInput(attrs={'placeholder':"Enter Your Email"}))
    
 
